@@ -2,12 +2,14 @@ import express from "express"
 import connectDB from "./config/db.js"
 import dotenv from "dotenv"
 import cors from "cors"
-import authRoutes from "./routes/auth.routes.js"
-import appointmentRoutes from "./routes/appointment.routes.js"
+// import authRoutes from "./routes/auth.routes.js"
+// import appointmentRoutes from "./routes/appointment.routes.js"
+// import leaveRoutes from "./routes/leave.routes.js"
 import serviceRoutes from "./routes/service.routes.js"
-import leaveRoutes from "./routes/leave.routes.js"
 import CustomError from "./util/custom-error.js"
 import globalErrorHandler from "./middlewares/global-error-handler.js"
+import morgan from "morgan"
+import logger from "./util/logger.js"
 
 // load env variables
 dotenv.config()
@@ -22,13 +24,31 @@ connectDB()
 app.use(cors())
 app.use(express.json())
 
+// morgan logger
+const morganFormat = ":method :url :status :response-time ms"
+app.use(
+    morgan(morganFormat, {
+        stream: {
+            write: (message) => {
+                const logObject = {
+                    method: message.split(" ")[0],
+                    url: message.split(" ")[1],
+                    status: message.split(" ")[2],
+                    responseTime: message.split(" ")[3],
+                }
+                logger.info(JSON.stringify(logObject))
+            },
+        },
+    })
+)
+
 // routes
 const baseUrl = "/api/v1"
 
-app.use(`${baseUrl}/auth`, authRoutes)
-app.use(`${baseUrl}/appointments`, appointmentRoutes)
+// app.use(`${baseUrl}/auth`, authRoutes)
+// app.use(`${baseUrl}/appointments`, appointmentRoutes)
 app.use(`${baseUrl}/services`, serviceRoutes)
-app.use(`${baseUrl}/leaves`, leaveRoutes)
+// app.use(`${baseUrl}/leaves`, leaveRoutes)
 
 // 404 route
 app.all("*", (req, res, next) => {
