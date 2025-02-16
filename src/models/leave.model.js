@@ -20,7 +20,7 @@ const leaveSchema = new mongoose.Schema(
             index: true,
         },
     },
-    { timestamps: true }
+    { timestamps: true, versionKey: false }
 )
 
 const Leave = mongoose.model("Leave", leaveSchema)

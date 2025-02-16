@@ -8,7 +8,7 @@ const AppointmentSchema = new mongoose.Schema(
             required: true,
             validate: {
                 validator: async function (userId) {
-                    const user = await mongoose.models("User").findById(userId)
+                    const user = await mongoose.model("User").findById(userId)
                     return user.role === "client"
                 },
                 message: "user is not a client",
@@ -20,7 +20,7 @@ const AppointmentSchema = new mongoose.Schema(
             required: true,
             validate: {
                 validator: async function (userId) {
-                    const user = await mongoose.models("User").findById(userId)
+                    const user = await mongoose.model("User").findById(userId)
                     return user.role === "stylist"
                 },
                 message: "user is not a stylist",
@@ -33,7 +33,7 @@ const AppointmentSchema = new mongoose.Schema(
             validate: {
                 validator: async function (serviceId) {
                     return await mongoose
-                        .models("Service")
+                        .model("Service")
                         .exists({ _id: serviceId })
                 },
                 message: "service does not exist",
@@ -52,9 +52,8 @@ const AppointmentSchema = new mongoose.Schema(
             ],
             default: "requested",
         },
-        qrCode: { type: String },
     },
-    { timestamps: true }
+    { timestamps: true, versionKey: false }
 )
 
 const Appointment = mongoose.model("Appointment", AppointmentSchema)

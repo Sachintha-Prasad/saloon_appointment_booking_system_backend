@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema(
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         mobileNo: { type: String, required: true, unique: true },
+        profileImageUrl: { type: String },
         role: {
             type: String,
             enum: ["admin", "stylist", "client"],
@@ -13,7 +14,7 @@ const UserSchema = new mongoose.Schema(
             required: true,
         },
     },
-    { timestamps: true, discriminatorKey: "role" }
+    { timestamps: true, versionKey: false, discriminatorKey: "role" }
 )
 
 const User = mongoose.model("User", UserSchema)

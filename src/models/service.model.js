@@ -7,7 +7,7 @@ const ServiceSchema = new mongoose.Schema(
         price: { type: Number, required: true },
         serviceImageUrl: { type: String, required: true },
     },
-    { timestamps: true }
+    { timestamps: true, versionKey: false }
 )
 
 const Service = mongoose.model("Service", ServiceSchema)
