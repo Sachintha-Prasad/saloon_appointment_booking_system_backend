@@ -5,11 +5,16 @@ import { validateRequest, validateObjectId } from "../util/validators.js"
 
 // @desc   create a new service
 // @route  POST /api/v1/services
-// @access Private/Admin
+// @access private/admin
 export const createService = asyncErrorHandler(async (req, res) => {
     validateRequest(req)
 
     const { name, duration, price, serviceImageUrl } = req.body
+
+    const isServiceExist = await Service.findOne({ name })
+    if (isServiceExist) {
+        throw new CustomError("service already exists", 400)
+    }
 
     const newService = new Service({
         name,
@@ -18,13 +23,13 @@ export const createService = asyncErrorHandler(async (req, res) => {
         serviceImageUrl,
     })
 
-    const service = await newService.save()
+    const service = await await newService.save()
     res.status(201).json(service)
 })
 
 // @desc   get all services
 // @route  GET /api/v1/services
-// @access Public
+// @access public
 export const getServices = asyncErrorHandler(async (req, res) => {
     const services = await Service.find()
     res.status(200).json(services)
@@ -32,7 +37,7 @@ export const getServices = asyncErrorHandler(async (req, res) => {
 
 // @desc   get a single service
 // @route  GET /api/v1/services/:id
-// @access Public
+// @access public
 export const getServiceById = asyncErrorHandler(async (req, res) => {
     validateObjectId(req.params.id)
 
@@ -47,7 +52,7 @@ export const getServiceById = asyncErrorHandler(async (req, res) => {
 
 // @desc   update a service
 // @route  PUT /api/v1/services/:id
-// @access Private/Admin
+// @access private/admin
 export const updateService = asyncErrorHandler(async (req, res) => {
     validateObjectId(req.params.id)
     validateRequest(req)
@@ -66,7 +71,7 @@ export const updateService = asyncErrorHandler(async (req, res) => {
 
 // @desc   delete a service
 // @route  DELETE /api/v1/services/:id
-// @access Private/Admin
+// @access private/admin
 export const deleteService = asyncErrorHandler(async (req, res) => {
     validateObjectId(req.params.id)
 
