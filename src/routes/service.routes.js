@@ -7,12 +7,16 @@ import {
     updateService,
     deleteService,
 } from "../controllers/service.controller.js"
+import authorizeRoles from "../middlewares/authorize-role.middleware.js"
+import verifyToken from "../middlewares/verify-token.middleware.js"
 
 const router = express.Router()
 
 // admin-protected routes
 router.post(
     "/",
+    verifyToken,
+    authorizeRoles("admin"),
     [
         [
             body("name", "Name is required").not().isEmpty(),
@@ -26,6 +30,8 @@ router.post(
 
 router.put(
     "/:id",
+    verifyToken,
+    authorizeRoles("admin"),
     [
         [
             body("name", "Name is required").optional().not().isEmpty(),
@@ -40,10 +46,20 @@ router.put(
     updateService
 )
 
-router.delete("/:id", deleteService)
+router.delete("/:id", verifyToken, authorizeRoles("admin"), deleteService)
 
 // public routes
-router.get("/", getServices)
-router.get("/:id", getServiceById)
+router.get(
+    "/",
+    verifyToken,
+    authorizeRoles("admin", "client", "stylist"),
+    getServices
+)
+router.get(
+    "/:id",
+    verifyToken,
+    authorizeRoles("admin", "client", "stylist"),
+    getServiceById
+)
 
 export default router
