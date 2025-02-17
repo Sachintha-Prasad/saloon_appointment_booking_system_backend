@@ -13,6 +13,6 @@ endpoints:
           name: PORT
           value: 5000
           name: JWT_SECRET
-          value: "5781d343851efe50696a34224b073828404d2f96ea953b70374f889786a0d1cd51bfc9996dbda66d556f40923c56c9ea14b7d8fc2008334c30ce82446496c0ea"
+          value: 5781d343851efe50696a34224b073828404d2f96ea953b70374f889786a0d1cd51bfc9996dbda66d556f40923c56c9ea14b7d8fc2008334c30ce82446496c0ea
           name: DB_CONNECTION_STRING
-          value: "mongodb+srv://prasadsachin96930:aoB1dL5IUKGdSAzC@cluster0.md1hi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+          value: mongodb+srv://prasadsachin96930:aoB1dL5IUKGdSAzC@cluster0.md1hi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
