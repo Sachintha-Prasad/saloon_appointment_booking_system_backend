@@ -1,0 +1,12 @@
+version: "3"
+services:
+    db:
+        image: mongo
+        environment:
+            - .env
+    app:
+        image: salon-blue
+        ports:
+            - "8000:5000"
+        environment:
+            - .env
