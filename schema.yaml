@@ -6,6 +6,16 @@ info:
 servers:
     - url: http://localhost:5000
       description: development server
+components:
+    securitySchemes:
+        BearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+
+security:
+    - BearerAuth: []
+
 paths:
     /api/v1/auth/register:
         post:
@@ -60,13 +70,15 @@ paths:
     /api/v1/auth/me:
         get:
             summary: Get current user
+            security:
+                - BearerAuth: []
             parameters:
                 - in: header
-                  name: token
+                  name: Authorization
                   required: true
                   schema:
                       type: string
-                  description: JWT token for authentication
+                  description: Bearer token for authentication
             responses:
                 "200":
                     description: User fetched successfully
@@ -80,13 +92,15 @@ paths:
     /api/v1/services:
         get:
             summary: Get all services
+            security:
+                - BearerAuth: []
             parameters:
                 - in: header
-                  name: token
+                  name: Authorization
                   required: true
                   schema:
                       type: string
-                  description: JWT token for authentication
+                  description: Bearer token for authentication
             responses:
                 "200":
                     description: Services fetched successfully
@@ -100,13 +114,15 @@ paths:
     /api/v1/services/add:
         post:
             summary: Add a new service
+            security:
+                - BearerAuth: []
             parameters:
                 - in: header
-                  name: token
+                  name: Authorization
                   required: true
                   schema:
                       type: string
-                  description: JWT token for authentication
+                  description: Bearer token for authentication
             requestBody:
                 required: true
                 content:
