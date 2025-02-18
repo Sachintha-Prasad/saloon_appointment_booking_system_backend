@@ -3,7 +3,7 @@ endpoint:
     - name: api
       displayName: api
       service:
-          basePath: /
+          basePath: /api/v1
           port: 5000
       type: REST
       networkVisibilities:
