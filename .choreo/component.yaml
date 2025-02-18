@@ -1,0 +1,11 @@
+schemaVersion: 1.1
+endpoint:
+    - name: api
+      displayName: api
+      service:
+          basePath: /
+          port: 5000
+      type: REST
+      networkVisibilities:
+          - public
+      schemaFilePath: schema.yaml
