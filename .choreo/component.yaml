@@ -1,7 +1,7 @@
 schemaVersion: 1.1
 endpoint:
-    - name: api
-      displayName: api
+    - name: salon-blue-api
+      displayName: salon-blue-api
       service:
           basePath: /api/v1
           port: 5000
