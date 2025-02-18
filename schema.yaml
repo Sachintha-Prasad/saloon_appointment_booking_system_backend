@@ -7,7 +7,6 @@ servers:
     - url: http://localhost:5000
       description: development server
 paths:
-# auth routes
     /api/v1/auth/register:
         post:
             summary: Register a new user
@@ -77,8 +76,7 @@ paths:
                     description: Unauthorized - Token is missing or invalid
                 "500":
                     description: Internal server error
- 
-# service routes
+
     /api/v1/services:
         get:
             summary: Get all services
