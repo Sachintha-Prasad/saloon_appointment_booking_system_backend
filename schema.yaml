@@ -6,8 +6,17 @@ info:
 servers:
     - url: http://localhost:5000
       description: development server
+
+components:
+    securitySchemes:
+        BearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+security:
+    - BearerAuth: []
+
 paths:
-# auth routes
     /api/v1/auth/register:
         post:
             summary: Register a new user
@@ -17,6 +26,12 @@ paths:
                     application/json:
                         schema:
                             type: object
+                            required:
+                                - name
+                                - email
+                                - password
+                                - mobileNo
+                                - role
                             properties:
                                 name:
                                     type: string
@@ -28,13 +43,13 @@ paths:
                                     type: string
                                 role:
                                     type: string
-                responses:
-                    "200":
-                        description: User registered successfully
-                    "400":
-                        description: Bad request
-                    "500":
-                        description: Internal server error
+            responses:
+                "201":
+                    description: User registered successfully
+                "400":
+                    description: Bad request
+                "500":
+                    description: Internal server error
 
     /api/v1/auth/login:
         post:
@@ -45,50 +60,38 @@ paths:
                     application/json:
                         schema:
                             type: object
+                            required:
+                                - email
+                                - password
                             properties:
                                 email:
                                     type: string
                                 password:
                                     type: string
-                responses:
-                    "200":
-                        description: User logged in successfully
-                    "400":
-                        description: Bad request
-                    "500":
-                        description: Internal server error
+            responses:
+                "200":
+                    description: User logged in successfully
+                "400":
+                    description: Bad request
+                "500":
+                    description: Internal server error
 
     /api/v1/auth/me:
         get:
             summary: Get current user
-            parameters:
-                - in: header
-                  name: token
-                  required: true
-                  schema:
-                      type: string
-                  description: JWT token for authentication
             responses:
                 "200":
                     description: User fetched successfully
                 "400":
-                        description: Bad request    
+                    description: Bad request
                 "401":
                     description: Unauthorized - Token is missing or invalid
                 "500":
                     description: Internal server error
- 
-# service routes
+
     /api/v1/services:
         get:
             summary: Get all services
-            parameters:
-                - in: header
-                  name: token
-                  required: true
-                  schema:
-                      type: string
-                  description: JWT token for authentication
             responses:
                 "200":
                     description: Services fetched successfully
@@ -99,22 +102,19 @@ paths:
                 "500":
                     description: Internal server error
 
-    /api/v1/services:
         post:
             summary: Add a new service
-            parameters:
-                - in: header
-                  name: token
-                  required: true
-                  schema:
-                      type: string
-                  description: JWT token for authentication
             requestBody:
                 required: true
                 content:
                     application/json:
                         schema:
                             type: object
+                            required:
+                                - name
+                                - price
+                                - duration
+                                - serviceImageURL
                             properties:
                                 name:
                                     type: string
@@ -123,13 +123,13 @@ paths:
                                 duration:
                                     type: number
                                 serviceImageURL:
-                                    type: string    
-                responses:
-                    "200":
-                        description: Service added successfully
-                    "400":
-                        description: Bad request
-                    "401":
-                        description: Unauthorized - Token is missing or invalid
-                    "500":
-                        description: Internal server error
+                                    type: string
+            responses:
+                "201":
+                    description: Service added successfully
+                "400":
+                    description: Bad request
+                "401":
+                    description: Unauthorized - Token is missing or invalid
+                "500":
+                    description: Internal server error

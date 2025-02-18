@@ -1,5 +1,5 @@
 schemaVersion: 1.1
-endpoint:
+endpoints:
     - name: salon-blue-api
       displayName: salon-blue-api
       service:
@@ -7,5 +7,5 @@ endpoint:
           port: 5000
       type: REST
       networkVisibilities:
-          - public
-      schemaFilePath: openapi.yaml
+          - Public
+      schemaFilePath: schema.yaml
