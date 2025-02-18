@@ -4,6 +4,7 @@ endpoints:
       displayName: salon-blue-api
       service:
           basePath: /
+          port: 5000
       type: REST
       networkVisibilities:
           - Public

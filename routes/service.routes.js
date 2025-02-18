@@ -14,7 +14,7 @@ const router = express.Router()
 
 // admin-protected routes
 router.post(
-    "/",
+    "/add",
     verifyToken,
     authorizeRoles("admin"),
     [
