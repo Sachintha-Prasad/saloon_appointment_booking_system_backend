@@ -8,4 +8,4 @@ endpoint:
       type: REST
       networkVisibilities:
           - public
-      schemaFilePath: schema.yaml
+      schemaFilePath: openapi.yaml
