@@ -2,10 +2,12 @@ openapi: 3.0.0
 info:
     title: Salon Blue API
     version: 1.0.0
-    description: API for Salon Blue which is a salon appointment booking system.
+    description: API for Salon Blue, a salon appointment booking system.
+
 servers:
     - url: http://localhost:5000
-      description: development server
+      description: Development Server
+
 components:
     securitySchemes:
         BearerAuth:
@@ -37,13 +39,13 @@ paths:
                                     type: string
                                 role:
                                     type: string
-                responses:
-                    "200":
-                        description: User registered successfully
-                    "400":
-                        description: Bad request
-                    "500":
-                        description: Internal server error
+            responses:
+                "200":
+                    description: User registered successfully
+                "400":
+                    description: Bad request
+                "500":
+                    description: Internal server error
 
     /api/v1/auth/login:
         post:
@@ -59,13 +61,13 @@ paths:
                                     type: string
                                 password:
                                     type: string
-                responses:
-                    "200":
-                        description: User logged in successfully
-                    "400":
-                        description: Bad request
-                    "500":
-                        description: Internal server error
+            responses:
+                "200":
+                    description: User logged in successfully
+                "400":
+                    description: Bad request
+                "500":
+                    description: Internal server error
 
     /api/v1/auth/me:
         get:
@@ -138,12 +140,12 @@ paths:
                                     type: number
                                 serviceImageURL:
                                     type: string
-                responses:
-                    "200":
-                        description: Service added successfully
-                    "400":
-                        description: Bad request
-                    "401":
-                        description: Unauthorized - Token is missing or invalid
-                    "500":
-                        description: Internal server error
+            responses:
+                "200":
+                    description: Service added successfully
+                "400":
+                    description: Bad request
+                "401":
+                    description: Unauthorized - Token is missing or invalid
+                "500":
+                    description: Internal server error

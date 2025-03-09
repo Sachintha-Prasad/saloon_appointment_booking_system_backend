@@ -1,14 +1,12 @@
 import Service from "../models/service.model.js"
 import asyncErrorHandler from "../util/async-error-handler.js"
 import CustomError from "../util/custom-error.js"
-import { validateRequest, validateObjectId } from "../util/validators.js"
+import validateObjectId from "../util/validate-object-id.js"
 
 // @desc   create a new service
 // @route  POST /api/v1/services
 // @access private/admin
 export const createService = asyncErrorHandler(async (req, res) => {
-    validateRequest(req)
-
     const { name, duration, price, serviceImageUrl } = req.body
 
     const isServiceExist = await Service.findOne({ name })
@@ -23,7 +21,7 @@ export const createService = asyncErrorHandler(async (req, res) => {
         serviceImageUrl,
     })
 
-    const service = await await newService.save()
+    const service = await newService.save()
     res.status(201).json(service)
 })
 
@@ -55,7 +53,6 @@ export const getServiceById = asyncErrorHandler(async (req, res) => {
 // @access private/admin
 export const updateService = asyncErrorHandler(async (req, res) => {
     validateObjectId(req.params.id)
-    validateRequest(req)
 
     const service = await Service.findByIdAndUpdate(req.params.id, req.body, {
         new: true,

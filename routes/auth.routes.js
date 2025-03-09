@@ -6,44 +6,53 @@ import {
     register,
 } from "../controllers/auth.controller.js"
 import verifyToken from "../middlewares/verify-token.middleware.js"
+import validateRequest from "../middlewares/validate-request.middleware.js"
 
 const router = express.Router()
 
-// auth routes
+// register a user
 router.post(
     "/register",
-    [
-        [
-            body("name", "Name is required").not().isEmpty(),
-            body("email", "Email is required").isEmail().not().isEmpty(),
-            body("password", "Password is required")
-                .isLength({ min: 6 })
-                .not()
-                .isEmpty(),
-            body("mobileNo", "Mobile number is required")
-                .isMobilePhone()
-                .not()
-                .isEmpty(),
-            body("role", "Role is required")
-                .isIn(["admin", "client", "stylist"])
-                .not()
-                .isEmpty(),
-        ],
-    ],
+    body("name", "Name is required")
+        .notEmpty()
+        .withMessage("name is required")
+        .isString()
+        .withMessage("name must be a string"),
+    body("email", "Email is required")
+        .notEmpty()
+        .withMessage("email is required")
+        .isEmail(),
+    body("password", "Password is required")
+        .notEmpty()
+        .withMessage("password is required")
+        .isLength({ min: 6 }),
+    body("mobileNo")
+        .notEmpty()
+        .withMessage("mobile number is required")
+        .isMobilePhone(),
+    body("role")
+        .notEmpty()
+        .withMessage("role is required")
+        .isIn(["admin", "client", "stylist"]),
+    validateRequest,
     register
 )
 
+// login a user
 router.post(
     "/login",
-    [
-        [
-            body("email", "Email is required").isEmail().not().isEmpty(),
-            body("password", "Password is required").not().isEmpty(),
-        ],
-    ],
+    body("email", "Email is required")
+        .notEmpty()
+        .withMessage("email is required")
+        .isEmail(),
+    body("password", "Password is required")
+        .notEmpty()
+        .withMessage("password is required"),
+    validateRequest,
     login
 )
 
-router.get("/me", verifyToken, getLoggedInUser)
+// get logged in user
+router.get("/me", verifyToken, validateRequest, getLoggedInUser)
 
 export default router

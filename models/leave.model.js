@@ -8,7 +8,7 @@ const leaveSchema = new mongoose.Schema(
             required: true,
             validate: {
                 validator: async function (userId) {
-                    const user = await mongoose.models("User").findById(userId)
+                    const user = await mongoose.model("User").findById(userId)
                     return user.role === "stylist"
                 },
                 message: "user is not a stylist",

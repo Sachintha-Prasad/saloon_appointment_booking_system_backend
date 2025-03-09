@@ -2,10 +2,11 @@ import express from "express"
 import connectDB from "./config/db.js"
 import dotenv from "dotenv"
 import cors from "cors"
-// import leaveRoutes from "./routes/leave.routes.js"
 import appointmentRoutes from "./routes/appointment.routes.js"
 import authRoutes from "./routes/auth.routes.js"
+import userRoutes from "./routes/user.routes.js"
 import serviceRoutes from "./routes/service.routes.js"
+import leaveRoutes from "./routes/leave.routes.js"
 import CustomError from "./util/custom-error.js"
 import globalErrorHandler from "./middlewares/global-error-handler.middleware.js"
 import morgan from "morgan"
@@ -52,9 +53,10 @@ app.use(
 const baseUrl = "/api/v1"
 
 app.use(`${baseUrl}/auth`, authRoutes)
+app.use(`${baseUrl}/users`, userRoutes)
 app.use(`${baseUrl}/appointments`, appointmentRoutes)
 app.use(`${baseUrl}/services`, serviceRoutes)
-// app.use(`${baseUrl}/leaves`, leaveRoutes)
+app.use(`${baseUrl}/leaves`, leaveRoutes)
 
 // 404 route
 app.all("*", (req, res, next) => {

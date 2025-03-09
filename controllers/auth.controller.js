@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken"
 import User from "../models/user.model.js"
 import CustomError from "../util/custom-error.js"
 import asyncErroHandler from "../util/async-error-handler.js"
-import { validateRequest } from "../util/validators.js"
 
 const { hash, compare } = bcrypt
 const { sign } = jwt
@@ -12,8 +11,6 @@ const { sign } = jwt
 // @route  POST /api/v1/auth/register
 // @access public
 export const register = asyncErroHandler(async (req, res) => {
-    validateRequest(req)
-
     const { name, email, password, mobileNo, role } = req.body
     const hashedPassword = await hash(password, 10)
 
@@ -45,8 +42,6 @@ export const register = asyncErroHandler(async (req, res) => {
 // @route  POST /api/v1/auth/login
 // @access public
 export const login = asyncErroHandler(async (req, res) => {
-    validateRequest(req)
-
     const { email, password } = req.body
 
     const user = await User.findOne({ email })

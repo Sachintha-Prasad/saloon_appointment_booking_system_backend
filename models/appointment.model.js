@@ -26,19 +26,6 @@ const AppointmentSchema = new mongoose.Schema(
                 message: "user is not a stylist",
             },
         },
-        serviceId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Service",
-            required: true,
-            validate: {
-                validator: async function (serviceId) {
-                    return await mongoose
-                        .model("Service")
-                        .exists({ _id: serviceId })
-                },
-                message: "service does not exist",
-            },
-        },
         date: { type: Date, required: true },
         slotNumber: { type: Number, required: true, min: 1, max: 8 },
         status: {
@@ -46,7 +33,7 @@ const AppointmentSchema = new mongoose.Schema(
             enum: [
                 "requested",
                 "accepted",
-                "declined",
+                "rejected",
                 "cancelled",
                 "completed",
             ],
