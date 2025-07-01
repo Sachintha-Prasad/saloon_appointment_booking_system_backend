@@ -82,7 +82,7 @@ export const getAvailableSlots = asyncErrorHandler(async (req, res) => {
         (slotNumber) => !bookedSlots.includes(slotNumber)
     )
 
-    res.json({ availableSlots: null })
+    res.json({ availableSlots })
 })
 
 // @desc   accept an appointment request

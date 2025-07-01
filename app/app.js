@@ -1,16 +1,14 @@
 import express from "express"
-import connectDB from "./config/db.js"
 import dotenv from "dotenv"
 import cors from "cors"
-import appointmentRoutes from "./routes/appointment.routes.js"
-import authRoutes from "./routes/auth.routes.js"
-import userRoutes from "./routes/user.routes.js"
-import serviceRoutes from "./routes/service.routes.js"
-import leaveRoutes from "./routes/leave.routes.js"
-import CustomError from "./util/custom-error.js"
-import globalErrorHandler from "./middlewares/global-error-handler.middleware.js"
 import morgan from "morgan"
-import logger from "./util/logger.js"
+import helmet from "helmet"
+
+import connectDB from "../config/db.js"
+import router from "../routes/index.routes.js"
+import CustomError from "../util/custom-error.js"
+import globalErrorHandler from "../middlewares/global-error-handler.middleware.js"
+import logger from "../util/logger.js"
 
 // load env variables
 dotenv.config()
@@ -30,19 +28,21 @@ app.use(
     })
 )
 app.use(express.json())
+app.use(helmet())
 
 // morgan logger
-const morganFormat = ":method :url :status :response-time ms"
+const morganFormat = ":method :status :url :response-time ms"
 app.use(
     morgan(morganFormat, {
         stream: {
             write: (message) => {
                 const logObject = {
                     method: message.split(" ")[0],
-                    url: message.split(" ")[1],
-                    status: message.split(" ")[2],
+                    status: message.split(" ")[1],
+                    url: message.split(" ")[2],
                     responseTime: message.split(" ")[3],
                 }
+
                 logger.info(JSON.stringify(logObject))
             },
         },
@@ -50,13 +50,7 @@ app.use(
 )
 
 // routes
-const baseUrl = "/api/v1"
-
-app.use(`${baseUrl}/auth`, authRoutes)
-app.use(`${baseUrl}/users`, userRoutes)
-app.use(`${baseUrl}/appointments`, appointmentRoutes)
-app.use(`${baseUrl}/services`, serviceRoutes)
-app.use(`${baseUrl}/leaves`, leaveRoutes)
+app.use(router)
 
 // 404 route
 app.all("*", (req, res, next) => {
@@ -70,8 +64,4 @@ app.all("*", (req, res, next) => {
 // global error handling middleware
 app.use(globalErrorHandler)
 
-// app starts here
-const port = process.env.PORT || 5000
-app.listen(port, () => {
-    console.log(`server running on port ${port}`)
-})
+export default app

@@ -20,8 +20,8 @@ router.post(
         .withMessage("name must be a string"),
     body("email", "Email is required")
         .notEmpty()
-        .withMessage("email is required")
-        .isEmail(),
+        .isEmail()
+        .withMessage("invalid email"),
     body("password", "Password is required")
         .notEmpty()
         .withMessage("password is required")
@@ -43,8 +43,8 @@ router.post(
     "/login",
     body("email", "Email is required")
         .notEmpty()
-        .withMessage("email is required")
-        .isEmail(),
+        .isEmail()
+        .withMessage("invalid email"),
     body("password", "Password is required")
         .notEmpty()
         .withMessage("password is required"),

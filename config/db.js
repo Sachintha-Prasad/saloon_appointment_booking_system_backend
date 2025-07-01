@@ -1,13 +1,14 @@
 import { connect as _connect } from "mongoose"
+import logger from "../util/logger.js"
 
 const connectDB = async () => {
     try {
         const connect = await _connect(process.env.DB_CONNECTION_STRING)
-        console.log(
+        logger.info(
             `Database connected: ${connect.connection.host}, ${connect.connection.name}`
         )
     } catch (error) {
-        console.log(error)
+        logger.error(error)
         process.exit(1)
     }
 }

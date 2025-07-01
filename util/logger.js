@@ -4,8 +4,9 @@ const { combine, timestamp, json, colorize } = format
 // custom format for console logging with colors
 const consoleLogFormat = format.combine(
     format.colorize(),
+    format.timestamp({ format: "YYYY-MM-DD HH:mm" }),
     format.printf(({ level, message, timestamp }) => {
-        return `${level}: ${message} ${timestamp}`
+        return `[${timestamp}] ${level}: ${message}`
     })
 )
 
@@ -17,7 +18,10 @@ const logger = createLogger({
         new transports.Console({
             format: consoleLogFormat,
         }),
-        new transports.File({ filename: "logs/app.log" }),
+        new transports.File({
+            filename: "logs/app.log",
+            format: combine(colorize(), timestamp(), json()),
+        }),
     ],
 })
 

@@ -7,8 +7,9 @@ import {
     getAllUsers,
     getAvailableStylists,
     getUser,
+    updateUser,
 } from "../controllers/user.controller.js"
-import { param, query } from "express-validator"
+import { body, param, query } from "express-validator"
 
 const router = express.Router()
 
@@ -40,7 +41,7 @@ router.get(
     getAllUsers
 )
 
-// get an single user
+// get a single user
 router.get(
     "/:id",
     verifyToken,
@@ -52,6 +53,25 @@ router.get(
         .withMessage("invalid user id"),
     validateRequest,
     getUser
+)
+
+// update a single user
+router.patch(
+    "/:id",
+    verifyToken,
+    authorizeRoles("client", "stylist", "admin"),
+    body("name", "Name is required")
+        .optional()
+        .isString()
+        .withMessage("name must be a string"),
+    body("email").optional().isEmail().withMessage("invalid email"),
+    body("mobileNo")
+        .optional()
+        .isMobilePhone()
+        .withMessage("invalid mobile number"),
+    body("profileImageUrl").optional().isURL().withMessage("invalid url"),
+    validateRequest,
+    updateUser
 )
 
 export default router

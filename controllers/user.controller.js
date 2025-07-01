@@ -3,6 +3,7 @@ import User from "../models/user.model.js"
 import asyncErrorHandler from "../util/async-error-handler.js"
 import CustomError from "../util/custom-error.js"
 import validateObjectId from "../util/validate-object-id.js"
+import logger from "../util/logger.js"
 
 // @desc   get all users
 // @route  GET /api/v1/users/
@@ -29,6 +30,30 @@ export const getUser = asyncErrorHandler(async (req, res) => {
         throw new CustomError("user not found", 404)
     }
 
+    res.status(200).json(user)
+})
+
+// @desc   update a user
+// @route  PUT /api/v1/users/:id
+// @access public
+export const updateUser = asyncErrorHandler(async (req, res) => {
+    validateObjectId(req.params.id)
+
+    const updatableData = req.body
+
+    if (updatableData.role || updatableData._id || updatableData.password) {
+        throw new CustomError("unauthorized action", 403)
+    }
+
+    const user = await User.findByIdAndUpdate(req.params.id, {
+        ...updatableData,
+    })
+
+    if (!user) {
+        throw new CustomError("user not found", 404)
+    }
+
+    logger.info(user)
     res.status(200).json(user)
 })
 
