@@ -45,6 +45,18 @@ export const createAppointment = asyncErrorHandler(async (req, res) => {
     res.status(201).json(appointment)
 })
 
+// @desc   Get all appointments (admin only)
+// @route  GET /api/v1/appointments/all
+// @access private (admin only)
+export const getAllAppointments = asyncErrorHandler(async (req, res) => {
+    const appointments = await Appointment.find()
+        .populate("clientId", "name email")
+        .populate("stylistId", "name email")
+        .sort({ date: -1, slotNumber: 1 })
+
+    res.status(200).json(appointments)
+})
+
 // @desc   get available slots for a stylist on a date
 // @route  GET /api/v1/appointments/availability?stylistId=stylistId&date=date
 // @access public
@@ -83,6 +95,42 @@ export const getAvailableSlots = asyncErrorHandler(async (req, res) => {
     )
 
     res.json({ availableSlots })
+})
+
+// @desc   Get all pending appointments for a client
+// @route  GET /api/v1/appointments/pending?clientId=clientId
+// @access private
+export const getPendingAppointments = asyncErrorHandler(async (req, res) => {
+    const { clientId } = req.query
+
+    if (!clientId) {
+        throw new CustomError("clientId is required", 400)
+    }
+
+    const appointments = await Appointment.find({
+        clientId,
+        status: "pending",
+    }).sort({ date: -1, slotNumber: 1 })
+
+    res.status(200).json(appointments)
+})
+
+// @desc   Get all approved (accepted) appointments for a client
+// @route  GET /api/v1/appointments/approved?clientId=clientId
+// @access private
+export const getApprovedAppointments = asyncErrorHandler(async (req, res) => {
+    const { clientId } = req.query
+
+    if (!clientId) {
+        throw new CustomError("clientId is required", 400)
+    }
+
+    const appointments = await Appointment.find({
+        clientId,
+        status: "accepted",
+    })
+
+    res.status(200).json(appointments).sort({ date: -1, slotNumber: 1 })
 })
 
 // @desc   accept an appointment request

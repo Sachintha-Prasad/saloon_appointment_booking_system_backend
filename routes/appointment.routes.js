@@ -3,7 +3,10 @@ import {
     acceptAppointment,
     cancelAppointment,
     createAppointment,
+    getAllAppointments,
+    getApprovedAppointments,
     getAvailableSlots,
+    getPendingAppointments,
     rejectAppointment,
 } from "../controllers/appointment.controller.js"
 import { body, param, query } from "express-validator"
@@ -42,6 +45,14 @@ router.post(
     createAppointment
 )
 
+router.get(
+    "/",
+    verifyToken,
+    authorizeRoles("admin"),
+    validateRequest,
+    getAllAppointments
+)
+
 // get available slots
 router.get(
     "/available-slots",
@@ -59,6 +70,34 @@ router.get(
         .withMessage("invalid date"),
     validateRequest,
     getAvailableSlots
+)
+
+// get all pending appointments for a client
+router.get(
+    "/pending",
+    verifyToken,
+    authorizeRoles("client", "admin"),
+    query("clientId")
+        .notEmpty()
+        .withMessage("client id is required")
+        .isMongoId()
+        .withMessage("invalid client id"),
+    validateRequest,
+    getPendingAppointments
+)
+
+// get all approved appointments for a client
+router.get(
+    "/approved",
+    verifyToken,
+    authorizeRoles("client", "admin"),
+    query("clientId")
+        .notEmpty()
+        .withMessage("client id is required")
+        .isMongoId()
+        .withMessage("invalid client id"),
+    validateRequest,
+    getApprovedAppointments
 )
 
 // accept an appointment

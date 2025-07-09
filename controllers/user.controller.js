@@ -45,9 +45,13 @@ export const updateUser = asyncErrorHandler(async (req, res) => {
         throw new CustomError("unauthorized action", 403)
     }
 
-    const user = await User.findByIdAndUpdate(req.params.id, {
-        ...updatableData,
-    })
+    const user = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+            ...updatableData,
+        },
+        { new: true, runValidators: true }
+    )
 
     if (!user) {
         throw new CustomError("user not found", 404)

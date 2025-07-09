@@ -2520,3 +2520,62 @@
 {"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/services\",\"responseTime\":\"119.973\"}","timestamp":"2025-06-29T19:23:56.428Z"}
 {"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/auth/me\",\"responseTime\":\"103.044\"}","timestamp":"2025-06-29T19:24:35.826Z"}
 {"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/services\",\"responseTime\":\"108.816\"}","timestamp":"2025-06-29T19:24:37.653Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:31:41.759Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-02.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:31:51.288Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:32:10.447Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-02.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:32:11.937Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:32:31.141Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-02.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:32:32.289Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:32:35.563Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-02.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:32:36.671Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:33:03.857Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:33:05.738Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:35:01.727Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:35:03.162Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:40:25.235Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-02.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:40:27.724Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"POST\",\"status\":\"200\",\"url\":\"/api/v1/auth/login\",\"responseTime\":\"366.210\"}","timestamp":"2025-07-09T12:48:12.528Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/services\",\"responseTime\":\"141.667\"}","timestamp":"2025-07-09T12:48:14.276Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/users/available-stylists?date=2025-07-09\",\"responseTime\":\"221.697\"}","timestamp":"2025-07-09T12:48:18.739Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/appointments/available-slots?stylistId=67b69460e842d017ef793d35&date=2025-07-09\",\"responseTime\":\"330.410\"}","timestamp":"2025-07-09T12:48:19.240Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"POST\",\"status\":\"200\",\"url\":\"/api/v1/auth/login\",\"responseTime\":\"416.445\"}","timestamp":"2025-07-09T12:49:17.794Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:49:53.083Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-01.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:49:55.288Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:53:42.430Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:53:44.230Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:54:16.709Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:54:17.842Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:54:51.708Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-02.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:54:53.528Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/appointments/pending?clientId=67b449be3af111f833b2f41b\",\"responseTime\":\"146.440\"}","timestamp":"2025-07-09T12:56:14.369Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T12:59:47.566Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-01.md1hi.mongodb.net, test","timestamp":"2025-07-09T12:59:49.759Z"}
+{"level":"\u001b[33m\u001b[33mwarn\u001b[33m\u001b[39m","message":"user with email Hansana@salon.blue not found","timestamp":"2025-07-09T12:59:52.231Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"POST\",\"status\":\"401\",\"url\":\"/api/v1/auth/login\",\"responseTime\":\"146.599\"}","timestamp":"2025-07-09T12:59:52.237Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"POST\",\"status\":\"200\",\"url\":\"/api/v1/auth/login\",\"responseTime\":\"336.893\"}","timestamp":"2025-07-09T13:00:03.172Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/appointments/pending?clientId=686cd9d90a31b4e960314366\",\"responseTime\":\"159.168\"}","timestamp":"2025-07-09T13:00:48.174Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T13:01:21.510Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T13:01:22.840Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T13:01:57.507Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T13:01:58.874Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T13:03:32.099Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T13:03:33.810Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T13:04:05.715Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T13:04:07.790Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T13:04:08.895Z"}
+{"level":"\u001b[33m\u001b[33mwarn\u001b[33m\u001b[39m","message":"no token, authorization denied","timestamp":"2025-07-09T13:04:35.063Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"401\",\"url\":\"/api/v1/appointments/\",\"responseTime\":\"5.178\"}","timestamp":"2025-07-09T13:04:35.071Z"}
+{"level":"\u001b[33m\u001b[33mwarn\u001b[33m\u001b[39m","message":"access denied","timestamp":"2025-07-09T13:04:41.579Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"403\",\"url\":\"/api/v1/appointments/\",\"responseTime\":\"7.675\"}","timestamp":"2025-07-09T13:04:41.580Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"POST\",\"status\":\"200\",\"url\":\"/api/v1/auth/login\",\"responseTime\":\"380.788\"}","timestamp":"2025-07-09T13:04:49.198Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/appointments/\",\"responseTime\":\"235.537\"}","timestamp":"2025-07-09T13:05:05.825Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/appointments/pending?clientId=686cd9d90a31b4e960314366\",\"responseTime\":\"118.980\"}","timestamp":"2025-07-09T13:06:18.374Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T13:07:15.407Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T13:07:16.936Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/appointments/\",\"responseTime\":\"1508.751\"}","timestamp":"2025-07-09T13:07:17.560Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/appointments/pending?clientId=686cd9d90a31b4e960314366\",\"responseTime\":\"109.198\"}","timestamp":"2025-07-09T13:07:20.197Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T13:07:53.036Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T13:07:54.115Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"server running on port 8000","timestamp":"2025-07-09T13:07:56.769Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Database connected: cluster0-shard-00-00.md1hi.mongodb.net, test","timestamp":"2025-07-09T13:07:57.920Z"}
+{"level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"{\"method\":\"GET\",\"status\":\"200\",\"url\":\"/api/v1/appointments/pending?clientId=686cd9d90a31b4e960314366\",\"responseTime\":\"167.514\"}","timestamp":"2025-07-09T13:08:12.026Z"}

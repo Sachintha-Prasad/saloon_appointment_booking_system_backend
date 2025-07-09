@@ -31,13 +31,14 @@ const AppointmentSchema = new mongoose.Schema(
         status: {
             type: String,
             enum: [
-                "requested",
+                "pending",
                 "accepted",
                 "rejected",
                 "cancelled",
                 "completed",
+                "expired",
             ],
-            default: "requested",
+            default: "pending",
         },
     },
     { timestamps: true, versionKey: false }
