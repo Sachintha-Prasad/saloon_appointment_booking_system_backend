@@ -7,6 +7,9 @@ import {
     getApprovedAppointments,
     getAvailableSlots,
     getPendingAppointments,
+    getRequestedAppointmentsForStylist,
+    getTodaysAppointmentsForStylist,
+    getUpcomingAppointmentsForStylist,
     rejectAppointment,
 } from "../controllers/appointment.controller.js"
 import { body, param, query } from "express-validator"
@@ -43,14 +46,6 @@ router.post(
         .withMessage("invalid slot number"),
     validateRequest,
     createAppointment
-)
-
-router.get(
-    "/",
-    verifyToken,
-    authorizeRoles("admin"),
-    validateRequest,
-    getAllAppointments
 )
 
 // get available slots
@@ -100,6 +95,62 @@ router.get(
     getApprovedAppointments
 )
 
+// cancel an appointment
+router.put(
+    "/:id/cancel",
+    verifyToken,
+    authorizeRoles("client", "admin"),
+    param("id")
+        .notEmpty()
+        .withMessage("appointment id is required")
+        .isMongoId()
+        .withMessage("invalid appointment id"),
+    validateRequest,
+    cancelAppointment
+)
+
+// get all pending (requested) appointments for a stylist
+router.get(
+    "/requested",
+    verifyToken,
+    authorizeRoles("stylist", "admin"),
+    query("stylistId")
+        .notEmpty()
+        .withMessage("stylist id is required")
+        .isMongoId()
+        .withMessage("invalid stylist id"),
+    validateRequest,
+    getRequestedAppointmentsForStylist
+)
+
+// get upcoming accepted appointments for a stylist
+router.get(
+    "/upcoming",
+    verifyToken,
+    authorizeRoles("stylist", "admin"),
+    query("stylistId")
+        .notEmpty()
+        .withMessage("stylist id is required")
+        .isMongoId()
+        .withMessage("invalid stylist id"),
+    validateRequest,
+    getUpcomingAppointmentsForStylist
+)
+
+// get today's accepted appointments for a stylist
+router.get(
+    "/today",
+    verifyToken,
+    authorizeRoles("stylist", "admin"),
+    query("stylistId")
+        .notEmpty()
+        .withMessage("stylist id is required")
+        .isMongoId()
+        .withMessage("invalid stylist id"),
+    validateRequest,
+    getTodaysAppointmentsForStylist
+)
+
 // accept an appointment
 router.put(
     "/:id/accept",
@@ -128,18 +179,12 @@ router.put(
     rejectAppointment
 )
 
-// cancel an appointment
-router.put(
-    "/:id/cancel",
+router.get(
+    "/",
     verifyToken,
-    authorizeRoles("client", "admin"),
-    param("id")
-        .notEmpty()
-        .withMessage("appointment id is required")
-        .isMongoId()
-        .withMessage("invalid appointment id"),
+    authorizeRoles("admin"),
     validateRequest,
-    cancelAppointment
+    getAllAppointments
 )
 
 export default router
