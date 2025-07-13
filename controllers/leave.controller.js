@@ -36,7 +36,7 @@ export const getStylistLeaves = asyncErrorHandler(async (req, res) => {
     }
 
     const leaves = await Leave.find({ stylistId }).select("date -_id")
+    const leaveDates = leaves.map((leave) => leave.date)
 
-    const leaveDates = leaves.map((leave) => ({ date: leave.date }))
-    res.status(200).json({ leaves: leaveDates })
+    res.status(200).json({ leaveDates })
 })
