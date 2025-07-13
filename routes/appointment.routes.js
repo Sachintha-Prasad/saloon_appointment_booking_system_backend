@@ -8,6 +8,7 @@ import {
     getAvailableSlots,
     getPendingAppointments,
     getRequestedAppointmentsForStylist,
+    getTodaysAppointmentsForStylist,
     getUpcomingAppointmentsForStylist,
     rejectAppointment,
 } from "../controllers/appointment.controller.js"
@@ -134,6 +135,20 @@ router.get(
         .withMessage("invalid stylist id"),
     validateRequest,
     getUpcomingAppointmentsForStylist
+)
+
+// get today's accepted appointments for a stylist
+router.get(
+    "/today",
+    verifyToken,
+    authorizeRoles("stylist", "admin"),
+    query("stylistId")
+        .notEmpty()
+        .withMessage("stylist id is required")
+        .isMongoId()
+        .withMessage("invalid stylist id"),
+    validateRequest,
+    getTodaysAppointmentsForStylist
 )
 
 // accept an appointment

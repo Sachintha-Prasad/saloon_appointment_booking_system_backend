@@ -1,6 +1,9 @@
 import express from "express"
-import { body } from "express-validator"
-import { requestLeave } from "../controllers/leave.controller.js"
+import { body, query } from "express-validator"
+import {
+    getStylistLeaves,
+    requestLeave,
+} from "../controllers/leave.controller.js"
 import verifyToken from "../middlewares/verify-token.middleware.js"
 import authorizeRoles from "../middlewares/authorize-role.middleware.js"
 import validateRequest from "../middlewares/validate-request.middleware.js"
@@ -24,6 +27,20 @@ router.post(
         .withMessage("invalid date"),
     validateRequest,
     requestLeave
+)
+
+// get all leave dates for a specific stylist
+router.get(
+    "/",
+    verifyToken,
+    authorizeRoles("stylist", "admin"), // allow both stylist and admin to view
+    query("stylistId")
+        .notEmpty()
+        .withMessage("stylist id required")
+        .isMongoId()
+        .withMessage("invalid stylist id"),
+    validateRequest,
+    getStylistLeaves
 )
 
 export default router

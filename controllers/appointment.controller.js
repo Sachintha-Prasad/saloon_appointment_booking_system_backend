@@ -194,6 +194,38 @@ export const getUpcomingAppointmentsForStylist = asyncErrorHandler(
     }
 )
 
+// @desc   get today's accepted appointments for a stylist
+// @route  GET /api/v1/appointments/today?stylistId=stylistId
+// @access private
+export const getTodaysAppointmentsForStylist = asyncErrorHandler(
+    async (req, res) => {
+        const { stylistId } = req.query
+
+        if (!stylistId) {
+            throw new CustomError("stylistId is required", 400)
+        }
+
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+
+        const tomorrow = new Date(today)
+        tomorrow.setDate(today.getDate() + 1)
+
+        const appointments = await Appointment.find({
+            stylistId,
+            status: "accepted",
+            date: {
+                $gte: today,
+                $lt: tomorrow,
+            },
+        })
+            .populate("clientId", "name email")
+            .sort({ slotNumber: 1 })
+
+        res.status(200).json(appointments)
+    }
+)
+
 // @desc   get all pending (requested) appointments for a stylist
 // @route  GET /api/v1/appointments/requested?stylistId=stylistId
 // @access private
