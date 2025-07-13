@@ -7,7 +7,7 @@ import leaveRoutes from "./leave.routes.js"
 
 const router = express.Router()
 
-const baseUrl = "/api/v1"
+const       baseUrl = "/api/v1"
 
 router.use(`${baseUrl}/auth`, authRoutes)
 router.use(`${baseUrl}/users`, userRoutes)
